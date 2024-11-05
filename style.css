@@ -1,0 +1,457 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  overflow-x:hidden;
+}
+/* Navbar start*/
+
+.navbar-brand img {
+  width: auto;
+  max-width: auto;
+  max-height: 50px;
+}
+
+/* Static underline for active class */
+.active-link {
+  color: #ffaa18;
+  position: relative;
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px; /* Positioning the underline */
+  left: 0;
+  background-color: #ffaa18;
+}
+
+/* Animated underline on hover */
+.nav-link {
+  display: inline-block;
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffaa18;
+  visibility: hidden;
+  transform: scaleX(0);
+
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::after,
+.active-link::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* Navbar end*/
+
+/* Hero Section start */
+#carouselExample {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+#carouselExample img {
+  filter: brightness(0.5);
+  height: 90vh;
+}
+
+/* Smooth transition for the images */
+.carousel-inner .carousel-item {
+  transition: transform 2s ease-in-out; /* 2 seconds for slower transition */
+}
+.text-section {
+  top: 35%;
+  left: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.solutionbtn {
+  background-color: rgba(142, 144, 146, 0.6);
+  font-weight: 400;
+  font-size: 13px;
+  width: 250px;
+  height: 40px;
+}
+.watchbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 15px;
+  font-weight: 700;
+}
+.explore-watch {
+  display: flex;
+  gap: 2rem;
+}
+.explorebtn {
+  width: 210px;
+  height: 60px;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+.explorebtn:hover {
+  background-color: black;
+  color: white;
+  border: black;
+}
+
+@media (max-width: 800px) {
+  /* CSS rules for screens smaller than 600px */
+  .explore-watch {
+    display: flex;
+    flex-direction: column;
+  }
+  .text-section {
+    top: 25%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .text-section {
+    left: 15%;
+    top: 20%;
+  }
+}
+/* Hero Section end */
+
+/* Find your solution section start */
+
+.findbg {
+  height: auto;
+  background-image: url(./assests/bg-findsoln.jpg);
+  background-size: cover;
+}
+.conatiner-soln {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+/* .soln{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: white;
+    min-width:200px;
+    transition: transform 0.5s ease-in-out; 
+   
+}
+.soln:hover {
+    transform: translateY(-15px); 
+    background-image: url(./assests/backgroundhover.jpg);
+    color: white;
+} */
+.soln {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden; /* Ensures the content stays within the div */
+  background-color: white;
+  min-width: 200px;
+  /* Ensure the div has height */
+  transition: transform 0.5s ease-in-out;
+}
+
+.soln:hover {
+  transform: translateY(-15px);
+  animation: slideUp 0.5s forwards;
+  background-image: url(./assests/backgroundhover.jpg);
+  /* Applies the slide up animation */
+  color: white;
+}
+
+/* Define the keyframes for the animation */
+@keyframes slideUp {
+  0% {
+    bottom: 0;
+    top: 100;
+    /* background-position: center bottom;
+        background-size: 100% 0%;  */
+  }
+  25% {
+    bottom: 25;
+    top: 75;
+  }
+  50% {
+    bottom: 50;
+    top: 50;
+  }
+  75% {
+    bottom: 75;
+    top: 25;
+  }
+  100% {
+    bottom: 100;
+    top: 0;
+  }
+}
+@media (min-width: 100px) and (max-width: 500px) {
+  .soln {
+    width: 500px;
+  }
+}
+@media (min-width: 500px) and (max-width: 800px) {
+  .soln {
+    width: 250px;
+  }
+}
+
+/* Find your solution section end */
+
+/* Welcome to tech section start */
+
+.welcome-main{
+  background-image: url(./assests//pattern-7.png);
+  height: auto;
+  padding-right: 0;
+  
+}
+.img-sidetop{
+  position: absolute;
+  top: 60%;
+  left: -15%;
+  border:10px solid white;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Light white overlay with 50% opacity */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Smooth transition */
+}
+
+/* Hover effect */
+.img-side:hover .overlay {
+  opacity: 1;
+}
+
+@media (max-width:1000px) {
+  .provide-2{
+    display: flex;
+    flex-direction: column;
+  }
+  .img-side img{
+    width: 80vw;
+  margin-left: 0;
+  }
+}
+@media (max-width:500px) {
+  .welcome-main{
+    padding-left: 40px;
+    
+  }
+  .section1{
+    margin-bottom: 20px;
+  }
+  
+}
+/* Welcome to tech section end */
+
+
+/* Service section start */
+.service-1{
+  border: 1px solid rgb(213, 212, 212);
+  width: 30%;
+}
+.service-icon{
+  position: absolute;
+  top: 85%;
+  left: 5%;
+  
+}
+@media (max-width:1200px) {
+  .service-1{
+    width: 40%;
+    margin-left: 50px;
+  }
+}
+   
+  @media (max-width:1000px) {
+    .service-1{
+    margin-left: 100px;
+      width: 70%;
+    }
+    .service-section{
+      margin-top: 200px;
+    }
+    
+  }
+  
+  @media (max-width:550px) {
+    .service-1{
+      margin-left: 30px;
+        width: 80%;
+      }
+      .service-img img{
+        width: 270px;
+      }
+  }
+  
+
+  .readmore:hover{
+    color: #ffaa18;
+  }
+
+  /* Service section end */
+
+  /* FAQ Section start */
+  .accordion-header:hover, .accordion-header:focus{
+    border: 1px solid #ffaa18;
+  }
+  .accordion{
+    border: 3px solid white;
+    box-shadow: 5px 0 5px 0 rgb(170, 166, 166);
+  }
+  /* FAQ Secction end */
+
+
+  /* Contact section start */
+  .contact-main{
+    
+    height: auto;
+    
+  }
+  input{
+    border: 5px solid rgb(241, 235, 235);
+    height: 60px;
+    width: 250px;
+    padding: 10px;
+  }
+  input:focus{
+    border: 5px solid #ffaa18;
+  }
+
+  .contact-img{
+    border-right: 20px solid #ffaa18;
+    border-bottom: 20px solid #ffaa18;
+  }
+  .contact-sec{
+    width: 400px;
+    height: 120px;
+    color: white;
+    position: absolute;
+    top: 8%;
+    left: -10%;
+  }
+  .con-number .num{
+    font-size: 30px;
+  }
+  .send-msg:hover{
+    background-color: black;
+    color: white;
+  }
+  @media (max-width:500px) {
+    .contact-main{
+      padding-left: 40px;
+    }
+    .send-msg{
+      width:auto !important;
+     
+    }
+    
+    
+  }
+
+  /* Contact Section end */
+
+
+  /* Footer Section Start */
+  .footer-section{
+    font-size: 17px;
+    background-image: url(./assests/footer_bg_bg.jpg);
+    height: 80vh;
+    width: 100vw;
+    background-size: cover;
+    position: relative;
+
+    
+  }
+  .foot4{
+    display: block;
+  }
+  .layer{
+    background-color: rgba(32, 29, 29, 0.9);
+    height: 100%;
+  }
+  .footer-top-sec{
+    color: white;
+  }
+  .socialmedia-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(32, 29, 29, 0.9);
+   
+  }
+  .hr {
+    margin-left: 20px;
+    width: 100%;
+    height: 3px; /* Adjust the height as needed */
+    background: linear-gradient(to right, #ffaa18 10%, rgb(104, 103, 103) 80%); /* Half red, half blue */
+    border: none; /* Remove default border */
+}
+.about{
+  list-style-type:none;
+  text-align: start;
+  padding-right: 10px;
+}
+.footer-bottom{
+  height: 100px;
+  background-color: rgba(41, 41, 41, 0.9);
+  position: absolute;
+  bottom:0;
+  left: 10.5%;
+  width: 80%;
+  color: white;
+}
+@media (max-width:1200px) {
+  .footer-section{
+    background-color:rgba(32, 29, 29, 0.9) ;
+    height: auto;
+  }
+  .foot3{
+    position: relative;
+    left: -20%;
+  }
+}
+@media (max-width:500px) {
+  .footer-bottom{
+   visibility: hidden;
+  }
+  .foot4{
+    margin-left: 0;
+  }
+  
+}
+  /* Footer Section end */
